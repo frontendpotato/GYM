@@ -10,4 +10,6 @@
     <color name="text_input_background">#FFFFFF</color> <!-- White background -->
     <color name="text_input_hint">#000000</color> <!-- Gray hint text -->
     <item name="text_input_text" type="color">#000000</item> <!-- Black text -->
+
+
 </resources>

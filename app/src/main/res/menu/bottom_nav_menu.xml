@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_exercises"
+        android:icon="@drawable/exercices"
+        android:title="Exercises" />
+    <item
+        android:id="@+id/navigation_diet"
+        android:icon="@drawable/diet"
+        android:title="Diet and Nutrition" />
+    <item
+        android:id="@+id/navigation_gym"
+        android:icon="@drawable/exercices"
+        android:title="Gym and services" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/user"
+        android:title="Profile" />
+</menu>
