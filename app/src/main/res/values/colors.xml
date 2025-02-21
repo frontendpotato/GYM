@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+        <color name="orange">#FFA500</color>
+    <!-- Text Input Colors -->
+    <color name="text_input_box_stroke">#FFA500</color> <!-- Light orange stroke when selected -->
+    <color name="text_input_box_stroke_default">#808080</color> <!-- Gray stroke by default -->
+    <color name="text_input_background">#FFFFFF</color> <!-- White background -->
+    <color name="text_input_hint">#000000</color> <!-- Gray hint text -->
+    <item name="text_input_text" type="color">#000000</item> <!-- Black text -->
+</resources>
