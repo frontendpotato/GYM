@@ -49,4 +49,11 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.material.v190)
 
+    implementation(libs.androidx.appcompat.v110)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.material.v100)
+    implementation(libs.androidx.vectordrawable)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.constraintlayout.v113)
+
 }
