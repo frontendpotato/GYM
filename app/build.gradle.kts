@@ -34,6 +34,12 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+        viewBinding {
+            enable = true
+
+    }
+
 }
 
 dependencies {
@@ -48,5 +54,7 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.material.v190)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.cardview)
 
 }

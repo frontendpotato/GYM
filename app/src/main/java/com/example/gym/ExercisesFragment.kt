@@ -1,10 +1,19 @@
 package com.example.gym
 
+import android.R
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.gym.databinding.FragmentExercisesBinding
+
 
 //// TODO: Rename parameter arguments, choose names that match
 //// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,11 +66,63 @@ import android.view.ViewGroup
 //            }
 //    }
 //}
+
+
+
+//class ExercisesFragment : Fragment() {
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        return inflater.inflate(R.layout.fragment_exercises, container, false)
+//    }
+//}
+
+
+
+
+
+
+
 class ExercisesFragment : Fragment() {
+
+    private var _binding: FragmentExercisesBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_exercises, container, false)
+    ): View {
+        _binding = FragmentExercisesBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Initialize the RecyclerView
+        binding.recyclerViewExercises.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = ExercisesAdapter(getExercisesList()) // Ensure you have an adapter and data source
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    // Sample data function
+    private fun getExercisesList(): List<Exercise> {
+        // Replace with your actual data fetching logic
+        return listOf(
+            Exercise("Push-up"),
+            Exercise("Squat"),
+            Exercise("Lunge"),
+            // Add more exercises
+        )
     }
 }
+
+
+
