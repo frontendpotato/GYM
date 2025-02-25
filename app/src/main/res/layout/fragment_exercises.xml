@@ -7,7 +7,7 @@
     tools:context=".ExercisesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewExercises"
+        android:id="@+id/recyclerViewPrograms"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"

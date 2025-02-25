@@ -5,33 +5,77 @@ package com.example.gym
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gym.databinding.ItemBinding
+import com.bumptech.glide.Glide
 
-data class Exercise(val name: String)
 
-class ExercisesAdapter(private val exercises: List<Exercise>) :
-    RecyclerView.Adapter<ExercisesAdapter.ExerciseViewHolder>() {
+//class ProgramsAdapter(private val exercises: List<Exercise>) :
+//    RecyclerView.Adapter<ProgramsAdapter.ProgramsViewHolder>() {
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgramsViewHolder {
+//        val binding = ItemBinding.inflate(
+//            LayoutInflater.from(parent.context), parent, false
+//        )
+//        return ProgramsViewHolder(binding)
+//    }
+//
+//    override fun onBindViewHolder(holder: ProgramsViewHolder, position: Int) {
+//        holder.bind(exercises[position])
+//    }
+//
+//    override fun getItemCount(): Int = exercises.size
+//
+//    inner class ProgramsViewHolder(private val binding: ItemBinding) :
+//        RecyclerView.ViewHolder(binding.root) {
+//
+//        fun bind(exercise: Program) {
+//            binding.textViewExerciseName.text = exercise.title
+//            // Bind other views if necessary
+//        }
+//    }
+//}
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
-        val binding = ItemBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
-        return ExerciseViewHolder(binding)
-    }
 
-    override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
-        holder.bind(exercises[position])
-    }
+import com.example.gym.databinding.ItemProgramBinding
 
-    override fun getItemCount(): Int = exercises.size
+class ProgramsAdapter(
+    private val programs: List<Program>,
+    private val onItemClick: (Program) -> Unit
+) : RecyclerView.Adapter<ProgramsAdapter.ProgramViewHolder>() {
 
-    inner class ExerciseViewHolder(private val binding: ItemBinding) :
+    inner class ProgramViewHolder(private val binding: ItemProgramBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(exercise: Exercise) {
-            binding.textViewExerciseName.text = exercise.name
-            // Bind other views if necessary
+        fun bind(program: Program) {
+            // Set the program title using the current language from the repository
+            binding.textViewProgramTitle.text = program.title.get(TrainingDataRepo.currentLanguage)
+            // Set the program image from the drawable resource
+           // binding.imageViewProgram.setImageResource(program.imageResId)
+
+
+            Glide.with(binding.root.context)
+                .load(program.imageResId) // Assuming it's a drawable resource ID
+                .placeholder(R.drawable.exercise_bench_press) // Optional: placeholder while loading
+                .into(binding.imageViewProgram)
+
+
+            // Set a click listener to notify when an item is clicked
+            binding.root.setOnClickListener {
+                onItemClick(program)
+            }
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProgramViewHolder {
+        val binding = ItemProgramBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProgramViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ProgramViewHolder, position: Int) {
+        holder.bind(programs[position])
+    }
+
+    override fun getItemCount(): Int = programs.size
 }
+
+
 

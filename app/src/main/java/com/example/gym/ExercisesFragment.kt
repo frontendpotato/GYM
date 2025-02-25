@@ -84,6 +84,8 @@ import com.example.gym.databinding.FragmentExercisesBinding
 
 
 
+
+
 class ExercisesFragment : Fragment() {
 
     private var _binding: FragmentExercisesBinding? = null
@@ -100,10 +102,14 @@ class ExercisesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize the RecyclerView
-        binding.recyclerViewExercises.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = ExercisesAdapter(getExercisesList()) // Ensure you have an adapter and data source
+        // Set up RecyclerView with horizontal layout
+        binding.recyclerViewPrograms.apply {
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            adapter = ProgramsAdapter(TrainingDataRepo.programs) { selectedProgram ->
+                // Navigate to the program details fragment (replace with actual navigation)
+//                val action = ExercisesFragmentDirections.actionExercisesFragmentToProgramDetailsFragment(selectedProgram.id)
+//                findNavController().navigate(action)
+            }
         }
     }
 
@@ -111,18 +117,4 @@ class ExercisesFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-    // Sample data function
-    private fun getExercisesList(): List<Exercise> {
-        // Replace with your actual data fetching logic
-        return listOf(
-            Exercise("Push-up"),
-            Exercise("Squat"),
-            Exercise("Lunge"),
-            // Add more exercises
-        )
-    }
 }
-
-
-

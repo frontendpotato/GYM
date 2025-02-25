@@ -56,5 +56,8 @@ dependencies {
     implementation(libs.material.v190)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.cardview)
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
 
 }
